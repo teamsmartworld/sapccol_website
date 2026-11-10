@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAPCCOL – Saint Anthony of Padua's Catholic Comprehensive College</title>
+<meta name="description" content="Saint Anthony of Padua's Catholic Comprehensive College, Mbohtong-Shisong, Kumbo. Faith, Discipline, Knowledge, Service.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gd:#1B4332;--gm:#2D6A4F;--gl:#40916C;
+  --gold:#C9A227;--glite:#E8C84A;--gpale:#F5E9B8;
+  --cream:#F8F5EE;--cd:#EDE8DC;--terra:#C67B3A;
+  --slate:#2C3E50;--td:#1A1A1A;--tb:#3D3D3D;--w:#FFFFFF;
+  --sh1:0 2px 12px rgba(0,0,0,.07);
+  --sh2:0 6px 24px rgba(0,0,0,.11);
+  --sh3:0 16px 48px rgba(0,0,0,.14);
+  --r:4px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;color:var(--tb);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* UTILITY */
+.sl{display:block;font-size:.65rem;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--gd);line-height:1.18;margin-bottom:16px}
+.ss{font-size:1rem;color:#666;line-height:1.75;max-width:620px;margin-bottom:50px}
+section{padding:96px 5%}
+.btn{display:inline-block;padding:14px 32px;font-family:'Lato',sans-serif;font-weight:900;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:var(--r);transition:all .25s;cursor:pointer;border:none}
+.btn-p{background:var(--gold);color:var(--gd)}
+.btn-p:hover{background:var(--glite);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,162,39,.35)}
+.btn-o{background:transparent;color:var(--w);border:2px solid rgba(255,255,255,.45)}
+.btn-o:hover{border-color:var(--w);background:rgba(255,255,255,.1)}
+.xdiv{display:flex;align-items:center;justify-content:center;gap:18px;padding:10px 5%}
+.xline{flex:1;height:1px;background:var(--gold);opacity:.25}
+.xicon{color:var(--gold);opacity:.55;flex-shrink:0;font-size:1.1rem}
+
+/* TOPBAR */
+.topbar{background:var(--gd);border-bottom:1px solid rgba(201,162,39,.25);padding:7px 5%;display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:rgba(255,255,255,.6);letter-spacing:.05em}
+.topbar a{color:var(--gold);text-decoration:none}
+.tbc{display:flex;gap:20px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:rgba(27,67,50,.98);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;border-bottom:2px solid var(--gold);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.nb{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nl2{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;font-weight:900;color:var(--gd);line-height:1}
+.nt{font-family:'Playfair Display',serif;color:var(--w);font-size:.82rem;line-height:1.25}
+.nt strong{color:var(--gold);font-size:.95rem;display:block}
+.nl{display:flex;list-style:none}
+.nl a{display:block;padding:0 14px;line-height:68px;color:rgba(255,255,255,.78);text-decoration:none;font-size:.73rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;transition:color .2s,background .2s;position:relative}
+.nl a::after{content:'';position:absolute;bottom:0;left:14px;right:14px;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .2s}
+.nl a:hover{color:var(--gold)}
+.nl a:hover::after{transform:scaleX(1)}
+.ncta{background:var(--gold)!important;color:var(--gd)!important;border-radius:var(--r);margin-left:8px}
+.ncta:hover{background:var(--glite)!important}
+.ncta::after{display:none!important}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hbg span{display:block;width:24px;height:2px;background:var(--w);border-radius:2px;transition:all .3s}
+.hbg.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* HERO */
+.hero{position:relative;min-height:calc(100vh - 68px);display:flex;align-items:center;overflow:hidden}
+.hbg2{position:absolute;inset:0;background:linear-gradient(135deg,rgba(27,67,50,.92) 0%,rgba(27,67,50,.62) 45%,rgba(44,62,80,.78) 100%),var(--gd);background-size:cover;background-position:center}
+.hbg2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}
+.hbg2 img.loaded{opacity:1}
+.hpat{position:absolute;inset:0;z-index:1;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(201,162,39,.025) 40px,rgba(201,162,39,.025) 41px)}
+.hcon{position:relative;z-index:2;max-width:760px;padding:80px 5%;margin-left:3%}
+.hey{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.heyl{width:38px;height:2px;background:var(--gold);flex-shrink:0}
+.hey span{font-size:.68rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;color:var(--w);line-height:1.08;margin-bottom:14px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hsubt{font-size:1.05rem;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:10px;max-width:560px}
+.hmotto{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);border-left:3px solid var(--gold);padding-left:14px;margin:22px 0 36px}
+.hact{display:flex;gap:14px;flex-wrap:wrap}
+.hbadge{position:absolute;top:50%;right:6%;transform:translateY(-50%);z-index:2;background:rgba(27,67,50,.85);border:2px solid rgba(201,162,39,.5);backdrop-filter:blur(8px);padding:30px 28px;border-radius:var(--r);text-align:center;max-width:220px}
+.hbadge .hbc{font-size:2.2rem;color:var(--gold);margin-bottom:14px;display:block}
+.hbadge p{font-size:.78rem;color:rgba(255,255,255,.72);line-height:1.6;font-style:italic}
+.hbadge strong{color:var(--gold);font-family:'Playfair Display',serif;font-size:.95rem}
+.hbar{position:absolute;bottom:0;left:0;right:0;z-index:2;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);display:flex}
+.hst{flex:1;padding:16px 18px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.hst:last-child{border-right:none}
+.hsn{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gold);font-weight:700;display:block;line-height:1}
+.hsl{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ANNOUNCE */
+.astrip{background:var(--gold);padding:13px 5%;display:flex;align-items:center;gap:16px}
+.abadge{background:var(--gd);color:var(--gold);font-size:.65rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px;white-space:nowrap;flex-shrink:0}
+.atext{font-size:.82rem;font-weight:700;color:var(--gd)}
+.alink{margin-left:auto;font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--gd);text-decoration:none;white-space:nowrap;flex-shrink:0}
+
+/* VISION */
+#vision{background:var(--gd);padding:80px 5%}
+.vmg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.vmc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:40px 32px;transition:background .3s}
+.vmc:hover{background:rgba(255,255,255,.09)}
+.vmc:first-child{border-left:4px solid var(--gold)}
+.vmi{font-size:2rem;margin-bottom:16px;display:block}
+.vmc h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);margin-bottom:14px}
+.vmc p{font-size:.88rem;color:rgba(255,255,255,.68);line-height:1.75}
+
+/* ABOUT */
+#about{background:var(--w)}
+.abg{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+.abm{position:relative}
+.aiph{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--gd),var(--gm));border-radius:var(--r);box-shadow:var(--sh3);display:flex;align-items:center;justify-content:center}
+.aiph svg{width:72px;opacity:.2}
+.aif{position:absolute;bottom:-28px;right:-28px;width:140px;aspect-ratio:1;border-radius:var(--r);box-shadow:var(--sh3);background:linear-gradient(135deg,var(--gl),var(--gm));border:4px solid var(--w);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.aif span{font-family:'Playfair Display',serif;color:var(--w);font-size:.7rem;text-align:center;line-height:1.3}
+.aif strong{font-family:'Playfair Display',serif;color:var(--glite);font-size:2rem;line-height:1}
+.aprop{margin-top:28px;padding:18px 20px;background:var(--cream);border-radius:var(--r);display:flex;align-items:flex-start;gap:14px}
+.aprop-i{width:38px;height:38px;border-radius:50%;background:var(--gd);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.aprop h4{font-size:.82rem;font-weight:700;color:var(--gd);margin-bottom:2px}
+.aprop p{font-size:.78rem;color:#777;line-height:1.5}
+.vg{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vp{display:flex;align-items:center;gap:12px;background:var(--cream);padding:14px 16px;border-radius:var(--r);border-left:3px solid var(--gold)}
+.vpi{font-size:1.2rem;flex-shrink:0}
+.vp h4{font-size:.85rem;font-weight:700;color:var(--gd);margin-bottom:2px}
+.vp p{font-size:.74rem;color:#888;line-height:1.4}
+
+/* NUMBERS */
+.nband{background:var(--gm);padding:50px 5%;display:grid;grid-template-columns:repeat(4,1fr)}
+.ni{text-align:center;padding:10px;border-right:1px solid rgba(255,255,255,.12)}
+.ni:last-child{border-right:none}
+.nv{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--gold);line-height:1;display:block}
+.nlb{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:6px;display:block}
+
+/* ACADEMICS */
+#academics{background:var(--cream)}
+.tbar{display:flex;gap:0;margin-bottom:40px;border-bottom:2px solid var(--cd)}
+.tbtn{padding:13px 28px;cursor:pointer;font-weight:900;font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;color:#999;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none}
+.tbtn.active{color:var(--gd);border-bottom-color:var(--gold)}
+.tbtn:hover:not(.active){color:var(--gm)}
+.tpanel{display:none}
+.tpanel.active{display:block}
+.dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.dc{background:var(--w);padding:28px 26px;border-radius:var(--r);border-top:4px solid transparent;box-shadow:var(--sh1);transition:transform .25s,box-shadow .25s}
+.dc:hover{transform:translateY(-5px);box-shadow:var(--sh2)}
+.cg{border-top-color:var(--gm)}.cgo{border-top-color:var(--gold)}.ct{border-top-color:var(--terra)}.cs{border-top-color:var(--slate)}
+.dci{font-size:1.6rem;margin-bottom:12px}
+.dc h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gd);margin-bottom:14px}
+.dc ul{list-style:none}
+.dc ul li{font-size:.78rem;color:#666;padding:5px 0;border-bottom:1px solid var(--cd);display:flex;align-items:flex-start;gap:8px}
+.dc ul li:last-child{border-bottom:none}
+.dc ul li::before{content:'›';color:var(--gold);font-weight:900;flex-shrink:0;margin-top:1px}
+.eband{margin-top:50px;padding:36px 40px;background:var(--gd);border-radius:var(--r);display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+.eband h3{font-family:'Playfair Display',serif;color:var(--w);font-size:1.15rem;flex-shrink:0}
+.epills{display:flex;flex-wrap:wrap;gap:10px;flex:1}
+.ep{background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.4);color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.08em;padding:6px 14px;border-radius:20px;text-transform:uppercase}
+
+/* CAMPUS */
+#campus{background:var(--gd);padding:96px 5%}
+#campus .st{color:var(--w)}
+#campus .ss{color:rgba(255,255,255,.62)}
+.gmosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:10px}
+.gtile{border-radius:var(--r);overflow:hidden;position:relative;background:var(--gm);cursor:pointer}
+.gtile:first-child{grid-row:1/3}
+.gtile img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gtile:hover img{transform:scale(1.06)}
+.gover{position:absolute;inset:0;background:linear-gradient(to top,rgba(27,67,50,.7),transparent 60%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px}
+.gtile:hover .gover{opacity:1}
+.gover span{color:var(--w);font-size:.78rem;font-weight:700;letter-spacing:.06em}
+.gph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gm),var(--gd));font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);padding:20px;text-align:center}
+.cinfo{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cic{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:30px 24px;transition:background .3s}
+.cic:hover{background:rgba(255,255,255,.1)}
+.cic .cii{font-size:1.8rem;margin-bottom:14px}
+.cic h4{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.05rem;margin-bottom:8px}
+.cic p{font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.65}
+
+/* QUOTE */
+.qsec{background:var(--gold);padding:70px 5%;text-align:center}
+.qm{font-size:5rem;color:var(--gd);opacity:.2;line-height:.6;font-family:Georgia,serif}
+.qt{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,2rem);font-style:italic;color:var(--gd);max-width:780px;margin:0 auto 20px;line-height:1.45}
+.qa{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(27,67,50,.65)}
+
+/* REQUIREMENTS */
+#requirements{background:var(--cream)}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.rc{background:var(--w);border-radius:var(--r);box-shadow:var(--sh1);overflow:hidden;transition:box-shadow .25s}
+.rc:hover{box-shadow:var(--sh2)}
+.rch{padding:18px 22px;display:flex;align-items:center;gap:12px}
+.rch.bgg{background:var(--gd)}.rch.bgo{background:var(--gold)}.rch.bgt{background:var(--terra)}.rch.bgs{background:var(--slate)}
+.rci{font-size:1.3rem}
+.rch h3{font-family:'Playfair Display',serif;font-size:.95rem}
+.rch.bgg h3{color:var(--gold)}.rch.bgo h3{color:var(--gd)}.rch.bgt h3,.rch.bgs h3{color:var(--w)}
+.rl{padding:16px 22px;list-style:none}
+.rl li{font-size:.8rem;color:#555;padding:7px 0;border-bottom:1px solid var(--cream);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.rl li:last-child{border-bottom:none}
+.rl li::before{content:'⇒';color:var(--gold);font-weight:700;flex-shrink:0;font-size:.75rem;margin-top:2px}
+
+/* FEES */
+#fees{background:var(--w)}
+.flay{display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start}
+.ftw{overflow-x:auto;margin-bottom:24px;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh1)}
+table{width:100%;border-collapse:collapse;font-size:.87rem}
+thead tr{background:var(--gd)}
+thead th{padding:13px 18px;text-align:left;color:var(--w);font-weight:700;letter-spacing:.06em;font-size:.74rem;text-transform:uppercase}
+tbody tr{border-bottom:1px solid var(--cd)}
+tbody tr:hover{background:var(--cream)}
+tbody td{padding:13px 18px;color:var(--tb)}
+tbody tr.trow{background:var(--cd)}
+tbody tr.trow td{font-weight:900;color:var(--gd);font-size:.95rem}
+.scard{background:var(--cream);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh1);margin-bottom:18px}
+.sch{background:var(--gd);padding:16px 20px;font-family:'Playfair Display',serif;color:var(--gold);font-size:1rem}
+.scb{padding:20px}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--cd)}
+.ir:last-child{border-bottom:none}
+.ir .il{font-size:.8rem;color:#666}
+.ir .iv{font-family:'Playfair Display',serif;color:var(--gd);font-weight:700;font-size:1rem}
+.notice{background:#FFF8E1;border-left:4px solid var(--gold);padding:14px 16px;border-radius:0 var(--r) var(--r) 0;font-size:.78rem;color:#5a4a00;line-height:1.6}
+.brow{padding:10px 0;border-bottom:1px solid var(--cd)}
+.brow:last-child{border-bottom:none}
+.brow .bn{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gm);margin-bottom:2px}
+.brow .bnum{font-size:.82rem;color:#555;font-family:monospace}
+
+/* ADMISSIONS */
+#admissions{background:var(--cream)}
+.alay{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.slist{list-style:none;counter-reset:step}
+.sitem{display:flex;gap:18px;margin-bottom:28px}
+.snum{width:44px;height:44px;border-radius:50%;background:var(--gd);color:var(--gold);font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.scon h4{font-weight:700;color:var(--gd);margin-bottom:4px;font-size:.95rem}
+.scon p{font-size:.82rem;color:#666;line-height:1.6}
+.dlist{list-style:none}
+.dlist li{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--cd);font-size:.85rem;color:var(--tb);line-height:1.5}
+.dlist li:last-child{border-bottom:none}
+.cbadge{width:22px;height:22px;border-radius:50%;background:var(--gm);color:var(--w);font-size:.65rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ctab{margin-top:36px;padding:32px;background:var(--gd);border-radius:var(--r);text-align:center}
+.ctab h3{font-family:'Playfair Display',serif;color:var(--w);font-size:1.3rem;margin-bottom:10px}
+.ctab p{color:rgba(255,255,255,.65);font-size:.85rem;margin-bottom:24px}
+
+/* NEWS */
+#news{background:var(--w)}
+.ng{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+.nc{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh1);background:var(--cream);transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column}
+.nc:hover{box-shadow:var(--sh2);transform:translateY(-4px)}
+.ncimg{height:180px;background:linear-gradient(135deg,var(--gm),var(--gd));display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0}
+.nc:first-child .ncimg{height:240px;background:linear-gradient(135deg,var(--gold),var(--terra))}
+.ncb{padding:22px;flex:1;display:flex;flex-direction:column}
+.ntag{display:inline-block;font-size:.62rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.nc h3{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gd);margin-bottom:10px;line-height:1.3}
+.nc p{font-size:.78rem;color:#777;line-height:1.6;flex:1}
+.ndate{font-size:.68rem;color:#aaa;margin-top:14px;font-style:italic}
+
+/* CONTACT */
+#contact{background:var(--gd);padding:96px 5%}
+#contact .st{color:var(--w)}
+#contact .ss{color:rgba(255,255,255,.6)}
+.clay{display:grid;grid-template-columns:1fr 1.1fr;gap:60px}
+.ci2{display:flex;flex-direction:column;gap:20px}
+.ccard{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:20px;transition:background .25s}
+.ccard:hover{background:rgba(255,255,255,.09)}
+.ccico{width:44px;height:44px;border-radius:50%;background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ccard h4{font-size:.68rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ccard p,.ccard a{font-size:.85rem;color:rgba(255,255,255,.72);line-height:1.65;text-decoration:none;display:block}
+.ccard a:hover{color:var(--gold)}
+.cfw{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:40px}
+.cfw h3{font-family:'Playfair Display',serif;color:var(--w);font-size:1.4rem;margin-bottom:28px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:7px}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);color:var(--w);font-family:'Lato',sans-serif;font-size:.88rem;transition:border-color .2s,background .2s;-webkit-appearance:none}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.28)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.12)}
+.fg textarea{resize:vertical;min-height:110px}
+.fg select option{background:#1a3a2a;color:var(--w)}
+#fmsg{display:none;margin-top:14px;padding:12px 16px;background:rgba(64,145,108,.25);border:1px solid rgba(64,145,108,.5);border-radius:var(--r);color:#a8e6c4;font-size:.82rem}
+
+/* MAP */
+.mapsec{background:var(--cream)}
+.mph{height:300px;background:linear-gradient(135deg,var(--gd),var(--gm));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative}
+.mpin{font-size:3rem;animation:pb 2s infinite}
+@keyframes pb{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.mph p{color:rgba(255,255,255,.6);font-size:.85rem}
+.mph a{color:var(--gold);font-weight:700;text-decoration:none}
+.moc{position:absolute;top:24px;left:5%;background:var(--w);border-radius:var(--r);padding:22px 26px;box-shadow:var(--sh3);max-width:270px}
+.moc h4{font-family:'Playfair Display',serif;color:var(--gd);font-size:1rem;margin-bottom:8px}
+.moc p{font-size:.76rem;color:#666;line-height:1.6}
+.moc .mdir{margin-top:12px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gm);text-decoration:none;display:block}
+
+/* FOOTER */
+footer{background:#0C1F14;padding:60px 5% 28px}
+.fg2{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.fbrand h2{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem;margin-bottom:10px}
+.fbrand p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.7}
+.fmotto{margin-top:14px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);border-top:1px solid rgba(255,255,255,.1);padding-top:14px}
+.fcol h4{font-size:.68rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:9px}
+.fcol ul li a{font-size:.8rem;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--gold)}
+.fcol p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65}
+.fcol .fph{color:var(--gold);font-size:.85rem;font-weight:700;text-decoration:none;display:block;margin-bottom:6px}
+.fvbar{display:flex;gap:6px;align-items:center;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.fvbar span{font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.7}
+.fvbar .fsep{color:rgba(255,255,255,.18);font-size:.7rem}
+.fbot{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.fbot p{font-size:.7rem;color:rgba(255,255,255,.22);line-height:1.5}
+.fdes{font-size:.68rem;color:rgba(255,255,255,.15)}
+
+/* SCROLL TOP */
+.stbtn{position:fixed;bottom:28px;right:28px;z-index:500;width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--gd);border:none;cursor:pointer;font-size:1.1rem;font-weight:700;box-shadow:var(--sh2);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;display:flex;align-items:center;justify-content:center}
+.stbtn.vis{opacity:1;pointer-events:auto}
+.stbtn:hover{transform:translateY(-3px)}
+
+
+  /* Active nav link */
+  .nl a.nav-active{color:var(--gold)!important}
+  .nl a.nav-active::after{transform:scaleX(1)}
+
+  /* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rvl{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease}
+.rvr{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis,.rvl.vis,.rvr.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.18s}.d3{transition-delay:.26s}.d4{transition-delay:.34s}.d5{transition-delay:.42s}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .flay{grid-template-columns:1fr}
+  .flay .fside{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .hbadge{display:none}
+}
+@media(max-width:900px){
+  .nl{display:none}
+  .nl.open{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(27,67,50,.98);backdrop-filter:blur(10px);padding:20px 0;overflow-y:auto;z-index:999}
+  .nl.open li a{line-height:56px;padding:0 32px;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.05)}
+  .nl.open li a::after{display:none}
+  .hbg{display:flex}
+  .topbar{display:none}
+  .vmg{grid-template-columns:1fr}
+  .abg{grid-template-columns:1fr}
+  .aif{bottom:-16px;right:10px}
+  .nband{grid-template-columns:repeat(2,1fr)}
+  .gmosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gtile:first-child{grid-row:auto;grid-column:1/3;height:240px}
+  .cinfo{grid-template-columns:1fr 1fr}
+  .ng{grid-template-columns:1fr 1fr}
+  .nc:first-child{grid-column:1/3}
+  .alay{grid-template-columns:1fr}
+  .clay{grid-template-columns:1fr}
+  .fg2{grid-template-columns:1fr 1fr}
+  .fbot{flex-direction:column;text-align:center}
+  .hbar{display:none}
+  .vg{grid-template-columns:1fr}
+  .moc{position:static;margin:20px auto;max-width:none}
+  .mph{height:200px}
+}
+@media(max-width:640px){
+  section{padding:64px 5%}
+  .dg{grid-template-columns:1fr}
+  .rg{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .gmosaic{grid-template-columns:1fr}
+  .gtile:first-child{grid-column:auto;height:200px}
+  .cinfo{grid-template-columns:1fr}
+  .ng{grid-template-columns:1fr}
+  .nc:first-child{grid-column:auto}
+  .nband{grid-template-columns:1fr 1fr}
+  .flay .fside{grid-template-columns:1fr}
+  .fg2{grid-template-columns:1fr}
+  .eband{flex-direction:column;align-items:flex-start;gap:20px}
+}
+
+/* PRINT */
+@media print{
+  nav,.topbar,.astrip,.hbar,.stbtn,#loader,.qsec{display:none!important}
+  body{background:white;color:black;font-size:11pt}
+  section{padding:20px 0;page-break-inside:avoid}
+  .st{color:#1B4332}
+  .nband{background:#1B4332}
+  #vision,#campus,#contact,footer{background:#1B4332;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:inherit;text-decoration:none}
+}
+
+/* PAGE LOADER */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--gd);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s,visibility .5s}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.ldr-cross{font-size:3rem;color:var(--gold);animation:lspin 1.2s ease-in-out infinite}
+@keyframes lspin{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.7}}
+.ldr-bar{width:180px;height:3px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.ldr-fill{height:100%;width:0;background:var(--gold);border-radius:2px;transition:width .05s linear}
+.ldr-txt{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div id="loader">
+  <div class="ldr-cross">&#10013;</div>
+  <div class="ldr-bar"><div class="ldr-fill" id="ldrFill"></div></div>
+  <div class="ldr-txt">SAPCCOL &mdash; Loading&hellip;</div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>&#128205; Mbohtong-Shisong, P.O. Box 11 Kumbo, N.W.R., Cameroon</span>
+  <div class="tbc">
+    <a href="tel:+237681722162">&#128222; 681 722 162</a>
+    <a href="tel:+237683445179">683 445 179</a>
+    <a href="tel:+237678791978">678 791 978</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="mn">
+  <a href="#home" class="nb">
+    <div class="nl2">&#10013;</div>
+    <div class="nt"><strong>SAPCCOL</strong>Saint Anthony of Padua's</div>
+  </a>
+  <ul class="nl" id="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#campus">Campus</a></li>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#admissions">Admissions</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact" class="ncta">Contact</a></li>
+  </ul>
+  <button class="hbg" id="hbg" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hbg2"><img src="school_campus.jpg" alt="SAPCCOL Campus" onload="this.classList.add('loaded')"></div>
+  <div class="hpat"></div>
+  <div class="hcon">
+    <div class="hey"><div class="heyl"></div><span>Diocese of Kumbo &bull; Cameroon &bull; SAPCCOL</span></div>
+    <h1>Saint Anthony<br>of Padua's <em>Catholic</em><br>Comprehensive College</h1>
+    <p class="hsubt">A co-educational boarding &amp; day school where faith, academic excellence, and lifelong character are forged together.</p>
+    <div class="hmotto" id="hmotto"></div>
+    <div class="hact">
+      <a href="#admissions" class="btn btn-p">Apply for Admission</a>
+      <a href="#academics" class="btn btn-o">Explore Programmes</a>
+    </div>
+  </div>
+  <div class="hbadge">
+    <span class="hbc">&#10013;</span>
+    <strong>Our Vision</strong>
+    <p>Quality Catholic education that fosters faith, academic excellence, discipline and service to God and humanity.</p>
+  </div>
+  <div class="hbar">
+    <div class="hst"><span class="hsn">2</span><span class="hsl">Academic Cycles</span></div>
+    <div class="hst"><span class="hsn">5+</span><span class="hsl">Specialties</span></div>
+    <div class="hst"><span class="hsn">Day &amp; Board</span><span class="hsl">Student Options</span></div>
+    <div class="hst"><span class="hsn">Kumbo</span><span class="hsl">Diocese, N.W.R.</span></div>
+  </div>
+</section>
+
+<!-- ANNOUNCE -->
+<div class="astrip">
+  <span class="abadge">&#128226; Admissions Open</span>
+  <span class="atext">2026/2027 School Year applications are now open. First installment required at admission.</span>
+  <a href="#admissions" class="alink">Apply Now &rarr;</a>
+</div>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="vmg">
+    <div class="vmc rv">
+      <span class="vmi">&#10013;</span>
+      <h3>Our Vision</h3>
+      <p>To provide quality Catholic education that fosters faith, academic excellence, discipline, and service to God and humanity &mdash; raising a generation rooted in virtue and competence.</p>
+    </div>
+    <div class="vmc rv d1">
+      <span class="vmi">&#128218;</span>
+      <h3>Our Mission</h3>
+      <p>To offer a comprehensive curriculum in a faith-filled, disciplined environment &mdash; equipping students with knowledge, moral values, and practical skills for tertiary education and productive life in society.</p>
+    </div>
+    <div class="vmc rv d2">
+      <span class="vmi">&#128420;</span>
+      <h3>Our Proprietor</h3>
+      <p>Owned and operated by the <strong style="color:var(--gold)">Order of Capuchin Friars Minor</strong>, Custody of St. Francis of Assisi Cameroon &mdash; a tradition of Franciscan simplicity, service, and intellectual formation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="abg">
+    <div class="abm rvl">
+      <div class="aiph">
+        <svg viewBox="0 0 80 60" fill="none" stroke="white" stroke-width="1.5" style="position:relative;z-index:1;width:72px;opacity:.2"><rect x="5" y="20" width="70" height="35" rx="2"/><polyline points="5,20 40,5 75,20"/><rect x="30" y="35" width="20" height="20"/><rect x="10" y="28" width="14" height="10"/><rect x="56" y="28" width="14" height="10"/></svg>
+        <img src="school_campus.jpg" alt="SAPCCOL Campus" onload="this.classList.add('aploaded')" onerror="this.style.display='none'">
+      </div>
+      <div class="aif"><strong>&#10013;</strong><span>Catholic<br>Heritage</span></div>
+      <div class="aprop" style="margin-top:48px">
+        <div class="aprop-i">&#128205;</div>
+        <div><h4>Location</h4><p>3 km from Shisong Catholic Hospital, up the plateau &mdash; quiet, safe, opposite the Kumbo Council forest.</p></div>
+      </div>
+    </div>
+    <div class="rvr">
+      <span class="sl">Who We Are</span>
+      <h2 class="st">Rooted in Faith.<br>Built for Excellence.</h2>
+      <p style="font-size:.92rem;color:#555;line-height:1.75;margin-bottom:16px">Saint Anthony of Padua's Catholic Comprehensive College (SAPCCOL) is a co-educational boarding and day school in the <strong>Diocese of Kumbo</strong>, North West Region, Cameroon. Founded under the patronage of the Capuchin Friars, SAPCCOL blends rigorous academics with a deep Catholic tradition of character formation.</p>
+      <p style="font-size:.88rem;color:#666;line-height:1.75;margin-bottom:28px">Situated on a serene highland plateau in Mbohtong-Shisong, the campus offers a distraction-free environment for serious academic and spiritual growth. Students from across Cameroon come knowing that SAPCCOL means discipline, excellence, and faith.</p>
+      <div class="vg">
+        <div class="vp"><span class="vpi">&#128591;</span><div><h4>Faith</h4><p>Prayer, devotion, and Catholic values woven into daily life.</p></div></div>
+        <div class="vp"><span class="vpi">&#9878;</span><div><h4>Discipline</h4><p>Structured routines that build responsibility and character.</p></div></div>
+        <div class="vp"><span class="vpi">&#127891;</span><div><h4>Knowledge</h4><p>Comprehensive curriculum spanning sciences, arts and technical.</p></div></div>
+        <div class="vp"><span class="vpi">&#129309;</span><div><h4>Service</h4><p>Forming young people to serve God, family, and society.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="nband">
+  <div class="ni rv"><span class="nv">2</span><span class="nlb">Academic Cycles</span></div>
+  <div class="ni rv d1"><span class="nv">5+</span><span class="nlb">Dept. Specialties</span></div>
+  <div class="ni rv d2"><span class="nv">Day &amp; Board</span><span class="nlb">Student Options</span></div>
+  <div class="ni rv d3"><span class="nv">GCE</span><span class="nlb">National Exams</span></div>
+</div>
+
+<div class="xdiv" style="background:var(--cream)"><div class="xline"></div><span class="xicon">&#10013;</span><div class="xline"></div></div>
+
+<!-- ACADEMICS -->
+<section id="academics">
+  <span class="sl rv">Curriculum</span>
+  <h2 class="st rv d1">Academic Programmes</h2>
+  <p class="ss rv d2">SAPCCOL offers a broad, nationally recognised curriculum across two cycles &mdash; combining General Education with Technical &amp; Vocational specialties &mdash; preparing students for GCE O/L and A/L examinations.</p>
+  <div class="tbar">
+    <button class="tbtn active" onclick="sw('ac','a1',this)">First Cycle (O/L)</button>
+    <button class="tbtn" onclick="sw('ac','a2',this)">Second Cycle (A/L)</button>
+  </div>
+  <div id="ac-a1" class="tpanel active">
+    <div class="dg">
+      <div class="dc cg rv"><div class="dci">&#128218;</div><h3>General Education</h3><ul><li>English and French Language</li><li>Pure Mathematics</li><li>Biology, Physics, Chemistry</li><li>Geography &amp; Additional Mathematics</li><li>History, Computer Science, Literature</li><li>Economics, Geology, Logic</li><li>Religious Studies</li></ul></div>
+      <div class="dc cgo rv d1"><div class="dci">&#128188;</div><h3>Accounting (ACC) Specialty</h3><ul><li>Accounting, Business Mathematics</li><li>Commerce &amp; Communication Techniques</li><li>French and English Languages</li><li>Economics &amp; Economic Geography</li><li>Entrepreneurship</li><li>Religious Studies</li><li>Law &amp; Government</li></ul></div>
+      <div class="dc cgo rv d2"><div class="dci">&#128200;</div><h3>Marketing (MKT) Specialty</h3><ul><li>Marketing, Commerce &amp; Business Maths</li><li>Economics, Law &amp; Government</li><li>Pure Mathematics</li><li>French and English Languages</li><li>Economic Geography</li><li>Religious Studies</li></ul></div>
+      <div class="dc ct rv d1"><div class="dci">&#9889;</div><h3>Electrical Power Systems (EPS)</h3><ul><li>Electrical Technology &amp; Diagram</li><li>Electrical Machines &amp; Electronic Circuits</li><li>Engineering Science</li><li>Religious Studies &amp; Entrepreneurship</li><li>Industrial Computing</li><li>French &amp; English, T. Mathematics</li></ul></div>
+      <div class="dc ct rv d2"><div class="dci">&#127959;</div><h3>Civil Engineering &mdash; Building Construction</h3><ul><li>Building Construction &amp; Technical Drawing</li><li>Engineering Science</li><li>QHSE, Religious Studies</li><li>Entrepreneurship, Industrial Computing</li><li>French &amp; English, T. Mathematics</li></ul></div>
+    </div>
+  </div>
+  <div id="ac-a2" class="tpanel">
+    <div class="dg">
+      <div class="dc cg rv"><div class="dci">&#127912;</div><h3>Advanced Level: Arts</h3><ul><li>A2 &ndash; History, Geography, Economics</li><li>A3 &ndash; Literature in English, History, Economics</li><li>A4 &ndash; Geography, Economics, Pure Maths &amp; Stats</li><li>A5 &ndash; Philosophy, History, Geography or Economics / Literature in English</li></ul></div>
+      <div class="dc cs rv d1"><div class="dci">&#128300;</div><h3>Advanced Level: Sciences</h3><ul><li>S1 &ndash; Chemistry, Physics, Mathematics</li><li>S2 &ndash; Chemistry, Biology, Physics</li><li>S3 &ndash; Chemistry, Biology, Mathematics</li><li>S4 &ndash; Chemistry, Biology, Geology</li></ul></div>
+      <div class="dc cgo rv d2"><div class="dci">&#128202;</div><h3>ACC Specialty (Advanced)</h3><ul><li>Corporate Accounting</li><li>Cost &amp; Management Accounting</li><li>Business Mathematics &amp; Financial Accounting</li><li>Entrepreneurship</li><li>Economics, Commerce &amp; Finance</li><li>Business Management</li></ul></div>
+      <div class="dc cg rv d1"><div class="dci">&#128295;</div><h3>Options (All Streams)</h3><ul><li>Religious Studies</li><li>Computer Science</li><li>Information &amp; Communication Technology (ICT)</li><li>Food Science &amp; Nutrition</li></ul></div>
+    </div>
+  </div>
+  <div class="eband rv">
+    <h3>&#127885; National Examinations Sat</h3>
+    <div class="epills">
+      <span class="ep">GCE O/L</span><span class="ep">GCE A/L</span><span class="ep">BEPHA</span><span class="ep">CRS Examination</span><span class="ep">Technical &amp; Vocational</span><span class="ep">Lower Sixth Entry</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS -->
+<section id="campus">
+  <span class="sl rv" style="color:var(--gold)">Our Home</span>
+  <h2 class="st rv d1">Life on Campus</h2>
+  <p class="ss rv d2">Nestled on a scenic highland plateau in Mbohtong-Shisong, the SAPCCOL campus is a place of beauty, order, and calm &mdash; with manicured gardens, arched corridors, modern classrooms, and a welcoming boarding community that students call home.</p>
+  <div class="gmosaic rv">
+    <div class="gtile" style="min-height:260px">
+      <img src="cloyster.jpg" alt="Courtyard" onerror="this.style.display='none'">
+      <div class="gph">&#10013; Arched Courtyard &amp; Central Garden</div>
+      <div class="gover"><span>Arched Courtyard</span></div>
+    </div>
+    <div class="gtile">
+      <img src="school_campus.jpg" alt="Campus" onerror="this.style.display='none'">
+      <div class="gph">&#127807; Campus Grounds</div>
+      <div class="gover"><span>Campus Grounds</span></div>
+    </div>
+    <div class="gtile">
+      <img src="flyer.jpg" alt="College" onerror="this.style.display='none'">
+      <div class="gph">&#128396; Administration Block</div>
+      <div class="gover"><span>Admin Block</span></div>
+    </div>
+    <div class="gtile">
+      <img src="flyer2.jpg" alt="Gardens" onerror="this.style.display='none'">
+      <div class="gph">&#127826; Landscaped Hedgerows</div>
+      <div class="gover"><span>Landscaped Gardens</span></div>
+    </div>
+    <div class="gtile">
+      <div class="gph">&#127979; Classrooms &amp; Labs</div>
+      <div class="gover"><span>Learning Spaces</span></div>
+    </div>
+  </div>
+  <div class="cinfo">
+    <div class="cic rv"><div class="cii">&#9962;</div><h4>Capuchin Franciscan Heritage</h4><p>SAPCCOL is managed by the Capuchin Friars &mdash; a centuries-old tradition of Catholic education built on Franciscan simplicity, fraternal care, and intellectual formation.</p></div>
+    <div class="cic rv d1"><div class="cii">&#127968;</div><h4>Co-Educational Boarding</h4><p>Both day and boarding options available. Boarding students benefit from structured dormitory life, pastoral care, supervised study periods, and a strong peer community.</p></div>
+    <div class="cic rv d2"><div class="cii">&#127807;</div><h4>Serene Highland Location</h4><p>Set 3 km from Shisong Catholic Hospital on the plateau above Kumbo Council forest &mdash; peaceful, safe, and purposefully removed from urban distractions.</p></div>
+    <div class="cic rv d3"><div class="cii">&#128161;</div><h4>Technical Facilities</h4><p>Dedicated labs for Electrical Power Systems and Civil Engineering, plus computer labs for ICT students in Forms 4, 5, and High School.</p></div>
+    <div class="cic rv d1"><div class="cii">&#127829;</div><h4>College Refectory</h4><p>A communal dining hall where all students eat together. Each student receives a plate, cup, and spoon upon arrival. Standard institutional meals are served.</p></div>
+    <div class="cic rv d2"><div class="cii">&#129338;</div><h4>Labour &amp; Campus Care</h4><p>Students participate in campus upkeep as part of formation &mdash; carrying a rag, broom, and rubber boots for scheduled labour periods that build discipline.</p></div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="qsec">
+  <div class="qm">&ldquo;</div>
+  <p class="qt">Faith and Integrity, Key to Genuine Intellectual Excellence</p>
+  <span class="qa">&mdash; SAPCCOL Motto &bull; Mbohtong-Shisong &bull; Diocese of Kumbo, Cameroon</span>
+</div>
+
+<!-- REQUIREMENTS -->
+<section id="requirements">
+  <span class="sl rv">What to Bring</span>
+  <h2 class="st rv d1">Student Requirements</h2>
+  <p class="ss rv d2">Every student &mdash; day or boarding &mdash; is expected to arrive fully prepared. Below are the complete requirements for the school year.</p>
+  <div class="rg">
+    <div class="rc rv"><div class="rch bgg"><span class="rci">&#129454;</span><h3>Personal Hygiene Items</h3></div><ul class="rl"><li>A dozen of toilet tissue / handkerchiefs</li><li>One or two plastic bucket(s)</li><li>A personal container to preserve drinking water</li><li>Bathing slippers, toothbrush and toothpaste</li><li>A dozen of savon (very important)</li><li>A dozen of bathing soap / rubbing oil / comb / foot brush</li><li>A floor rag &amp; a towel</li><li>A durable bathing bag (not a soap dish)</li></ul></div>
+    <div class="rc rv d1"><div class="rch bgs"><span class="rci">&#128083;</span><h3>Dresses &amp; Clothing</h3></div><ul class="rl"><li>2 thick night dresses &mdash; preferably thick tracksuit &amp; long thick black socks (NB: Nights are very cold)</li><li>At least 2 compound wears (sample in school)</li><li>Inner wears / underwears (at least a dozen &mdash; very important for hygiene)</li><li>White dressing slippers (crocs) for girls, black for boys</li><li><strong>NB: No unwanted dresses or gadgets shall be allowed in school</strong></li></ul></div>
+    <div class="rc rv d2"><div class="rch bgo"><span class="rci">&#128084;</span><h3>School Uniforms</h3></div><ul class="rl"><li>School T-Shirt &mdash; obtained in school at 2,500 frs</li><li>Two Coffee Brown 4-pleat skirts with band (girls) / Two Coffee Brown trousers (boys)</li><li>Sport shoes (preferably white)</li><li>Sports wear: Yellow/Red (1st Cycle), White (2nd Cycle) &mdash; available at 3,500 frs</li><li>Thick hooded compound wear Pullover &mdash; sold only in school at 7,500 frs</li><li>Two+ pairs of school sandals (sobo) &amp; black low-heel shoes only</li><li>School daily-wear Pullover &mdash; 5,000 frs (in school)</li><li>White Kinclerks</li><li>School Identity Card &mdash; 1,000 frs (pay Day 1)</li></ul></div>
+    <div class="rc rv d1"><div class="rch bgg"><span class="rci">&#128591;</span><h3>Devotional Requirements</h3></div><ul class="rl"><li>A Cameroon Hymnal or School Hymnal</li><li>A Good News Bible, Rosary, or Simple Prayer Book</li><li>Praying the Psalms Daily &mdash; sold in school at 1,500 frs</li></ul></div>
+    <div class="rc rv d2"><div class="rch bgt"><span class="rci">&#128295;</span><h3>Labour Items</h3></div><ul class="rl"><li>A rag &amp; a bundle of broom</li><li>A pair of rubber shoes or rain boots for labour</li><li><em>All personal property should carry the student's name</em></li></ul></div>
+    <div class="rc rv"><div class="rch bgs"><span class="rci">&#128716;</span><h3>Boarding &mdash; Beddings</h3></div><ul class="rl"><li>An 8-spring bed mattress</li><li>4 bed sheets: 2 sky blue &amp; 2 of any colour of your choice</li><li>2 pillow cases &amp; a pillow</li><li>A thick blanket (NB: very cold here)</li><li>A trunk with good locks</li><li>Charcoal iron, an umbrella and/or a rain coat</li><li>A solar torch or battery torch with spare batteries</li></ul></div>
+    <div class="rc rv d1"><div class="rch bgo"><span class="rci">&#127869;</span><h3>Refectory</h3></div><ul class="rl"><li>A plate, cup and spoon to be given to the school once (if misplaced/destroyed, student replaces)</li><li>All students are encouraged to eat what is provided at table</li><li>The college kitchen has no provision for special meals or supplements</li></ul></div>
+  </div>
+</section>
+
+<div class="xdiv" style="background:var(--w)"><div class="xline"></div><span class="xicon">&#10013;</span><div class="xline"></div></div>
+
+<!-- FEES -->
+<section id="fees">
+  <span class="sl rv">2026/2027 School Year</span>
+  <h2 class="st rv d1">School Fees Structure</h2>
+  <p class="ss rv d2">All amounts in CFA Francs (FCFA). Fees are non-refundable once paid. Payment at AFG Bank or OPSECS Bank Cameroon.</p>
+  <div class="flay">
+    <div>
+      <div class="tbar">
+        <button class="tbtn active" onclick="sw('fees','f1',this)">First Cycle</button>
+        <button class="tbtn" onclick="sw('fees','f2',this)">Second Cycle</button>
+        <button class="tbtn" onclick="sw('fees','fo',this)">Other Fees</button>
+      </div>
+      <div id="fees-f1" class="tpanel active rv">
+        <div class="ftw"><table>
+          <thead><tr><th>Fee Item</th><th>Day Student (FCFA)</th><th>Boarder (FCFA)</th></tr></thead>
+          <tbody>
+            <tr><td>Registration</td><td>6,000</td><td>6,000</td></tr>
+            <tr><td>Tuition</td><td>51,000</td><td>51,000</td></tr>
+            <tr><td>P.T.A. Levy</td><td>2,000</td><td>2,000</td></tr>
+            <tr><td>Project Fee</td><td>10,000</td><td>10,000</td></tr>
+            <tr><td>Examination Fee</td><td>2,000</td><td>2,000</td></tr>
+            <tr><td>Boarding Fee</td><td>&mdash;</td><td>165,000</td></tr>
+            <tr class="trow"><td>TOTAL</td><td>71,000</td><td>236,000</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div id="fees-f2" class="tpanel rv">
+        <div class="ftw"><table>
+          <thead><tr><th>Fee Item</th><th>Day Student (FCFA)</th><th>Boarder (FCFA)</th></tr></thead>
+          <tbody>
+            <tr><td>Registration</td><td>6,000</td><td>6,000</td></tr>
+            <tr><td>Tuition</td><td>57,000</td><td>57,000</td></tr>
+            <tr><td>P.T.A. Levy</td><td>2,000</td><td>2,000</td></tr>
+            <tr><td>Project Fee</td><td>10,000</td><td>10,000</td></tr>
+            <tr><td>Examination Fee</td><td>2,000</td><td>2,000</td></tr>
+            <tr><td>Boarding Fee</td><td>&mdash;</td><td>165,000</td></tr>
+            <tr class="trow"><td>TOTAL</td><td>77,000</td><td>242,000</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div id="fees-fo" class="tpanel rv">
+        <div class="ftw"><table>
+          <thead><tr><th>Additional Fee</th><th>Amount (FCFA)</th><th>Applicable To</th></tr></thead>
+          <tbody>
+            <tr><td>Computer / ICT Fee</td><td>5,000</td><td>Forms 4, 5 &amp; High School</td></tr>
+            <tr><td>Science Practical Fee</td><td>25,000</td><td>Lower &amp; Upper Sixth Science students</td></tr>
+            <tr><td>Technical &amp; Industrial Practical Fee</td><td>10,000</td><td>Tech. &amp; Industrial students</td></tr>
+            <tr><td>CRS Examination</td><td>2,500</td><td>Form 3 &amp; Lower Sixth</td></tr>
+            <tr><td>BEPHA Fees &amp; Passport Photo</td><td>5,250</td><td>All qualifying students</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div class="notice" style="margin-top:20px">&#9888;&#65039; <strong>NB: Fees once paid are non-refundable.</strong> Forward all receipts to the Bursar. Additional fees apply on top of the base structure.</div>
+    </div>
+    <div class="fside">
+      <div class="scard rv"><div class="sch">&#128179; Fee Installments</div><div class="scb"><div class="ir"><span class="il">Boarding Students &mdash; 1st Installment</span><span class="iv">100,000 frs</span></div><div class="ir"><span class="il">Day Students &mdash; 1st Installment</span><span class="iv">40,000 frs</span></div><div class="ir"><span class="il">Full Balance Deadline</span><span class="iv">28 February</span></div><p style="font-size:.74rem;color:#888;margin-top:12px;line-height:1.6">First installment due upon admission or as soon as the school year begins.</p></div></div>
+      <div class="scard rv d1"><div class="sch">&#127968; Banking Information</div><div class="scb"><div class="brow"><div class="bn">AFG Bank (Former Banque Atlantique)</div><div class="bnum">10034 00030 93041680003 83</div></div><div class="brow"><div class="bn">OPSECS Bank Cameroon</div><div class="bnum">Account No: 400857</div></div><p style="font-size:.74rem;color:var(--terra);margin-top:12px;font-weight:700">&rarr; Forward all receipts to the Bursar</p></div></div>
+      <div class="scard rv d2"><div class="sch">&#128222; Contact the Bursar</div><div class="scb"><a href="tel:+237681722162" style="color:var(--gd);font-weight:700;text-decoration:none;display:block;margin-bottom:6px;font-size:.9rem">&#128222; 681 722 162</a><a href="tel:+237683445179" style="color:#555;text-decoration:none;display:block;margin-bottom:4px;font-size:.85rem">683 445 179</a><a href="tel:+237678791978" style="color:#555;text-decoration:none;display:block;font-size:.85rem">678 791 978</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMISSIONS -->
+<section id="admissions">
+  <span class="sl rv">Join SAPCCOL</span>
+  <h2 class="st rv d1">Admissions Process</h2>
+  <p class="ss rv d2">We welcome students of faith, discipline, and academic ambition. Here is everything you need to apply for the 2026/2027 school year.</p>
+  <div class="alay">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--gd);font-size:1.15rem;margin-bottom:22px" class="rv">&#128203; How to Apply</h3>
+      <ul class="slist">
+        <li class="sitem rv"><div class="snum">1</div><div class="scon"><h4>Gather Your Documents</h4><p>Collect all required documents &mdash; birth certificate, baptismal card (for Catholics), report cards, and result slips for Lower Sixth entry.</p></div></li>
+        <li class="sitem rv d1"><div class="snum">2</div><div class="scon"><h4>Pay the First Installment</h4><p>Make the first fee payment at AFG Bank or OPSECS Bank Cameroon. Boarding: 100,000 frs. Day students: 40,000 frs. Keep your receipt.</p></div></li>
+        <li class="sitem rv d2"><div class="snum">3</div><div class="scon"><h4>Submit at the School Office</h4><p>Bring all documents and your bank receipt to the SAPCCOL admissions office at Mbohtong-Shisong, P.O. Box 11, Kumbo.</p></div></li>
+        <li class="sitem rv d3"><div class="snum">4</div><div class="scon"><h4>Confirmation &amp; Orientation</h4><p>Upon successful admission, you receive your school calendar, uniform details, and boarding or day student orientation information.</p></div></li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--gd);font-size:1.15rem;margin-bottom:22px" class="rv">&#128193; Required Documents</h3>
+      <ul class="dlist rv d1">
+        <li><span class="cbadge">&#10003;</span> Photocopy of Birth Certificate</li>
+        <li><span class="cbadge">&#10003;</span> Photocopy of Baptismal Card (for Catholic applicants)</li>
+        <li><span class="cbadge">&#10003;</span> Report Cards or Transfer Certificates and other relevant documents</li>
+        <li><span class="cbadge">&#10003;</span> Result Slip &mdash; required for admission into Lower Sixth</li>
+        <li><span class="cbadge">&#10003;</span> Payment receipt of the first installment of fees</li>
+      </ul>
+      <div class="ctab rv d2">
+        <h3>Ready to Join SAPCCOL?</h3>
+        <p>Contact our admissions office or visit us at Mbohtong-Shisong to begin your application for the 2026/2027 school year.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="tel:+237681722162" class="btn btn-p">&#128222; Call Admissions</a>
+          <a href="#contact" class="btn btn-o" style="border-color:rgba(255,255,255,.4)">Send Enquiry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <span class="sl rv">What's Happening</span>
+  <h2 class="st rv d1">News &amp; Announcements</h2>
+  <p class="ss rv d2">Stay up to date with life at SAPCCOL &mdash; academic highlights, school events, and important notices.</p>
+  <div class="ng">
+    <div class="nc rv">
+      <div class="ncimg">&#128226;</div>
+      <div class="ncb"><span class="ntag">&#128204; Official Notice</span><h3>2026/2027 Admissions Now Open &mdash; All Cycles Welcome</h3><p>Saint Anthony of Padua's Catholic Comprehensive College is pleased to announce that admissions are now open for the 2026/2027 school year. Applications are being accepted for all forms in both First and Second Cycles, as well as Technical &amp; Vocational streams. Contact the school office early to secure your place.</p><span class="ndate">June 2026</span></div>
+    </div>
+    <div class="nc rv d1">
+      <div class="ncimg">&#127891;</div>
+      <div class="ncb"><span class="ntag">&#127885; Academic</span><h3>GCE Results: Students Excel in Science &amp; Technical Streams</h3><p>SAPCCOL students recorded commendable results in the national GCE O/L and A/L examinations, particularly in Science and Technical &amp; Vocational streams. The school congratulates the graduating class on this achievement.</p><span class="ndate">May 2026</span></div>
+    </div>
+    <div class="nc rv d2">
+      <div class="ncimg">&#9962;</div>
+      <div class="ncb"><span class="ntag">&#128591; Faith Life</span><h3>Annual School Retreat &amp; Mass of the Holy Spirit Opens the Term</h3><p>As is tradition at SAPCCOL, the new academic year begins with a school-wide retreat and Mass of the Holy Spirit, celebrated by the Capuchin Friars, invoking divine guidance over all students and staff for the year ahead.</p><span class="ndate">September 2025</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL-WIDTH CTA BAND -->
+<div style="background:linear-gradient(135deg,var(--gd),var(--gm));padding:60px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:30px">
+  <div>
+    <div style="font-size:.68rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">2026/2027 School Year</div>
+    <h2 style="font-family:'Playfair Display',serif;color:white;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.2;margin-bottom:0">Begin Your Journey at SAPCCOL</h2>
+  </div>
+  <div style="display:flex;gap:14px;flex-wrap:wrap">
+    <a href="#admissions" class="btn btn-p">Apply Now</a>
+    <a href="#fees" class="btn btn-o">View Fees</a>
+    <a href="tel:+237681722162" class="btn" style="background:rgba(255,255,255,.12);color:white;border:2px solid rgba(255,255,255,.3)">&#128222; Call Us</a>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="mapsec">
+  <div class="mph">
+    <span class="mpin">&#128205;</span>
+    <p>SAPCCOL &mdash; Mbohtong-Shisong, 3 km from Shisong Catholic Hospital, Kumbo, N.W.R.</p>
+    <a href="https://maps.google.com/?q=Mbohtong-Shisong+Kumbo+Cameroon" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+    <div class="moc">
+      <h4>&#128205; Find Us</h4>
+      <p>Mbohtong-Shisong<br>P.O. Box 11 Kumbo<br>North West Region, Cameroon</p>
+      <p style="margin-top:8px;font-size:.74rem;color:#999">3 km from Shisong Catholic Hospital, up the plateau, opposite the Kumbo Council forest.</p>
+      <a class="mdir" href="https://maps.google.com/?q=Mbohtong-Shisong+Kumbo+Cameroon" target="_blank" rel="noopener">&#129522; Get Directions</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="sl rv" style="color:var(--gold)">Get In Touch</span>
+  <h2 class="st rv d1">Contact the College</h2>
+  <p class="ss rv d2">Reach our admissions office, bursar, or administration. We welcome enquiries from prospective students, parents, and partners.</p>
+  <div class="clay">
+    <div class="ci2">
+      <div class="ccard rv"><div class="ccico">&#128205;</div><div><h4>Physical Address</h4><p>Mbohtong-Shisong, SAPCCOL<br>P.O. Box 11 Kumbo<br>North West Region, Cameroon</p></div></div>
+      <div class="ccard rv d1"><div class="ccico">&#128222;</div><div><h4>Phone &amp; WhatsApp</h4><a href="tel:+237681722162">+237 681 722 162</a><a href="tel:+237683445179">+237 683 445 179</a><a href="tel:+237678791978">+237 678 791 978</a></div></div>
+      <div class="ccard rv d2"><div class="ccico">&#127968;</div><div><h4>Banking &mdash; Fee Payments</h4><p><strong style="color:var(--glite)">AFG Bank:</strong> 10034 00030 93041680003 83<br><strong style="color:var(--glite)">OPSECS Bank:</strong> 400857<br><span style="color:rgba(255,255,255,.4);font-size:.76rem">Forward receipts to the Bursar</span></p></div></div>
+      <div class="ccard rv d3"><div class="ccico">&#9962;</div><div><h4>Proprietor</h4><p>Order of Capuchin Friars Minor<br>Custody of St. Francis of Assisi<br>Cameroon</p></div></div>
+      <div class="ccard rv d2"><div class="ccico">&#127963;</div><div><h4>Diocese</h4><p>Catholic Diocese of Kumbo<br>North West Region, Cameroon</p></div></div>
+    </div>
+    <div class="cfw rv d1">
+      <h3>Send an Enquiry</h3>
+      <div class="frow">
+        <div class="fg"><label>First Name</label><input type="text" id="fn" placeholder="e.g. Marie"></div>
+        <div class="fg"><label>Surname</label><input type="text" id="ln" placeholder="e.g. Fongang"></div>
+      </div>
+      <div class="fg"><label>Phone / WhatsApp</label><input type="tel" id="ph" placeholder="+237 6XX XXX XXX"></div>
+      <div class="fg"><label>Enquiry Type</label>
+        <select id="eq">
+          <option value="">Select a topic&hellip;</option>
+          <option>Admission &mdash; First Cycle</option>
+          <option>Admission &mdash; Second Cycle</option>
+          <option>Technical / Vocational Programme</option>
+          <option>Fees &amp; Payment</option>
+          <option>Boarding Information</option>
+          <option>Academic Programmes</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message</label><textarea id="msg" placeholder="Write your message here&hellip;"></textarea></div>
+      <button class="btn btn-p" style="width:100%;padding:15px;font-size:.85rem" onclick="submitF()">Send Message &#9993;&#65039;</button>
+      <div id="fmsg">&#9989; Thank you! Your enquiry has been received. We will contact you shortly on the number provided.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg2">
+    <div class="fbrand">
+      <h2>Saint Anthony of Padua's<br>Catholic Comprehensive College</h2>
+      <p>A co-educational boarding and day school in the Diocese of Kumbo, Cameroon &mdash; formed in the Capuchin Franciscan tradition of faith, service, and excellence.</p>
+      <div class="fmotto">Faith &bull; Discipline &bull; Knowledge &bull; Service</div>
+    </div>
+    <div class="fcol">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About SAPCCOL</a></li>
+        <li><a href="#academics">Academic Programmes</a></li>
+        <li><a href="#campus">Campus Life</a></li>
+        <li><a href="#requirements">Student Requirements</a></li>
+        <li><a href="#fees">Fees Structure</a></li>
+        <li><a href="#admissions">Admissions</a></li>
+        <li><a href="#news">News &amp; Announcements</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Programmes</h4>
+      <ul>
+        <li><a href="#academics">General Education</a></li>
+        <li><a href="#academics">Accounting Specialty</a></li>
+        <li><a href="#academics">Marketing Specialty</a></li>
+        <li><a href="#academics">Electrical Power Systems</a></li>
+        <li><a href="#academics">Civil Engineering &mdash; Building</a></li>
+        <li><a href="#academics">Advanced Level Arts</a></li>
+        <li><a href="#academics">Advanced Level Sciences</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Contact</h4>
+      <p>Mbohtong-Shisong<br>P.O. Box 11 Kumbo<br>N.W.R., Cameroon</p>
+      <br>
+      <a href="tel:+237681722162" class="fph">&#128222; 681 722 162</a>
+      <a href="tel:+237683445179" style="color:rgba(255,255,255,.45);font-size:.8rem;display:block;margin-bottom:4px;text-decoration:none">683 445 179</a>
+      <a href="tel:+237678791978" style="color:rgba(255,255,255,.45);font-size:.8rem;display:block;text-decoration:none">678 791 978</a>
+    </div>
+  </div>
+  <div class="fvbar">
+    <span>Faith</span><span class="fsep">&bull;</span><span>Discipline</span><span class="fsep">&bull;</span><span>Knowledge</span><span class="fsep">&bull;</span><span>Service</span>
+  </div>
+  <div class="fbot">
+    <p>&copy; 2026 SAPCCOL &mdash; Saint Anthony of Padua's Catholic Comprehensive College<br>Proprietor: Order of Capuchin Friars Minor, Custody of St. Francis of Assisi Cameroon</p>
+    <span class="fdes">Website design proposal by TeamSmartWorld</span>
+  </div>
+</footer>
+
+<button class="stbtn" id="stbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+<script>
+// NAV SCROLL
+const mn=document.getElementById('mn');
+window.addEventListener('scroll',()=>{
+  mn.classList.toggle('scrolled',window.scrollY>60);
+  document.getElementById('stbtn').classList.toggle('vis',window.scrollY>400);
+},{passive:true});
+
+// HAMBURGER
+const hbg=document.getElementById('hbg');
+const nlEl=document.getElementById('nl');
+hbg.addEventListener('click',()=>{
+  hbg.classList.toggle('open');
+  nlEl.classList.toggle('open');
+  document.body.style.overflow=nlEl.classList.contains('open')?'hidden':'';
+});
+nlEl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hbg.classList.remove('open');nlEl.classList.remove('open');document.body.style.overflow='';
+}));
+
+// TAB SWITCHER
+function sw(g,id,btn){
+  // find the correct section to scope panels
+  const sec=btn.closest('section')||btn.closest('div');
+  sec.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('active'));
+  sec.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('active'));
+  const panel=document.getElementById(g+'-'+id);
+  if(panel){panel.classList.add('active');panel.classList.add('vis');}
+  if(btn)btn.classList.add('active');
+}
+
+// REVEAL
+const allRv=document.querySelectorAll('.rv,.rvl,.rvr');
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});
+},{threshold:.08});
+allRv.forEach(el=>ro.observe(el));
+
+// FORM
+function submitF(){
+  const fn=document.getElementById('fn').value.trim();
+  const ph=document.getElementById('ph').value.trim();
+  if(!fn||!ph){alert('Please fill in your name and phone number.');return;}
+  const m=document.getElementById('fmsg');
+  m.style.display='block';
+  m.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// GALLERY img fallback
+document.querySelectorAll('.gtile img').forEach(img=>{
+  img.addEventListener('error',function(){this.style.display='none';});
+  img.addEventListener('load',function(){
+    const ph=this.parentElement.querySelector('.gph');
+    if(ph)ph.style.display='none';
+  });
+});
+
+// NAV active highlight
+const secs=document.querySelectorAll('section[id]');
+const nas=document.querySelectorAll('.nl a');
+function updateNav(){
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  nas.forEach(a=>{
+    const isActive=a.getAttribute('href')==='#'+cur;
+    a.classList.toggle('nav-active',isActive);
+  });
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+updateNav();
+
+
+// Typing animation for hero motto
+(function(){
+  const el=document.getElementById('hmotto');
+  if(!el)return;
+  const text='Faith and Integrity, Key to Genuine Intellectual Excellence';
+  let i=0;
+  function type(){
+    if(i<=text.length){el.textContent=text.slice(0,i);i++;setTimeout(type,i===1?800:38);}
+  }
+  setTimeout(type,1200);
+})();
+
+// PAGE LOADER
+(function(){
+  const fill=document.getElementById('ldrFill');
+  const loader=document.getElementById('loader');
+  let w=0;
+  const iv=setInterval(()=>{
+    w=Math.min(w+(Math.random()*12+4),92);
+    fill.style.width=w+'%';
+    if(w>=92)clearInterval(iv);
+  },60);
+  window.addEventListener('load',()=>{
+    fill.style.width='100%';
+    setTimeout(()=>loader.classList.add('done'),400);
+  });
+  setTimeout(()=>loader.classList.add('done'),3000);
+})();
+
+</script>
+</body>
+</html>
